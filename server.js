@@ -1,13 +1,9 @@
-import express from 'express'
+const express = require('express');
 
 const app = express();
 
-// const http = require('http');
-
-// const routeHandler = require('./routes/router');
-
-// const server = http.createServer(routeHandler);
-
+const routes = require('./router.js');
+app.use('/users', routes);
 const PORT = 3000;
 
 app.listen(PORT, () => {
