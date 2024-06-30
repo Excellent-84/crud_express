@@ -4,11 +4,11 @@ module.exports = {
 
   async addUser(user) {
     try {
-      const result = await pool.query(
+      const {rows} = await pool.query(
         'INSERT INTO users (name, age) VALUES ($1, $2) RETURNING id',
         [user.name, user.age]
       );
-      const lastId = result.rows[0].id
+      const lastId = rows[0].id
       return { id: lastId, ...user };
     } catch (err) {
       throw err;
