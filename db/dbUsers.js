@@ -32,7 +32,7 @@ module.exports = {
 
   async getUsers() {
     try {
-      const { rows } = await pool.query('SELECT * FROM users');
+      const { rows } = await pool.query('SELECT * FROM users ORDER BY id');
       return rows;
     } catch (err) {
       throw err;
