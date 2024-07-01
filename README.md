@@ -16,12 +16,6 @@ git clone https://github.com/Excellent-84/crud.git
 cd crud
 ```
 
-##### Установить библиотеку для PostgreSQL:
-
-```
-npm install pg
-```
-
 ##### Запустить проект:
 
 ```
