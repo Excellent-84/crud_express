@@ -1,18 +1,19 @@
-const express = require('express');
-const router = express.Router();
-const createUser = require('./createUser');
-const getUser = require('./getUser');
-const listUser = require('./listUser');
-const updateUser = require('./updateUser');
-const deleteUser = require('./deleteUser');
-const bodyParser = require('body-parser');
+import Router from 'express';
+import createUser from './createUser.js';
+import getUser from './getUser.js';
+import listUser from './listUser.js';
+import updateUser from './updateUser.js';
+import deleteUser from './deleteUser.js';
+import bodyParser from 'body-parser';
 
-router.use(bodyParser.urlencoded({ extended: true }));
+const userRoutes = new Router();
 
-router.get('/', listUser);
-router.get('/:id', getUser);
-router.post('/', createUser);
-router.put('/:id', updateUser);
-router.delete('/:id', deleteUser);
+userRoutes.use(bodyParser.urlencoded({ extended: true }));
 
-module.exports = router;
+userRoutes.get('/', listUser);
+userRoutes.get('/:id', getUser);
+userRoutes.post('/', createUser);
+userRoutes.put('/:id', updateUser);
+userRoutes.delete('/:id', deleteUser);
+
+export default userRoutes;

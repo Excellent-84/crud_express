@@ -1,11 +1,9 @@
-const { Pool } = require('pg');
+import pg from 'pg';
 
-const pool = new Pool({
+export default new pg.Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'crud_express_db',
   password: 'postgres',
   port: 5432
 });
-
-module.exports = pool;

@@ -1,10 +1,11 @@
-const express = require('express');
-const router = express.Router();
-const usersRouter = require('./userRoutes/userRoutes.js');
+import Router from 'express';
+import userRoutes from './userRoutes/userRoutes.js';
 
-router.use('/users', usersRouter);
+const router = new Router();
+
+router.use('/users', userRoutes);
 router.use((req, res) => {
   res.status(404).json({ message: 'Page not found' });
 });
 
-module.exports = router;
+export default router;

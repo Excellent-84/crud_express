@@ -1,6 +1,6 @@
-const db = require('../db/dbUsers.js');
+import db from '../db/dbUsers.js';
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   const id = parseInt(req.params.id);
   const success = await db.deleteUser(id);
 

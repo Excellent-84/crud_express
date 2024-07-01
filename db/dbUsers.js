@@ -1,4 +1,4 @@
-const pool = require('./db.js');
+import pool from './db.js';
 
 pool.query(
   `CREATE TABLE IF NOT EXISTS users (
@@ -15,7 +15,7 @@ pool.query(
   }
 );
 
-module.exports = {
+export default {
 
   async addUser(user) {
     try {
