@@ -8,19 +8,4 @@ const pool = new Pool({
   port: 5432
 });
 
-pool.query(
-  `CREATE TABLE IF NOT EXISTS users (
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    age INTEGER NOT NULL
-  )`,
-  (err, result) => {
-    if (err) {
-      console.error('Error creating table: ', err);
-    } else {
-      console.log('Table users is available!');
-    }
-  }
-);
-
 module.exports = pool;

@@ -1,14 +1,29 @@
-const pool = require('../db/db.js');
+const pool = require('./db.js');
+
+pool.query(
+  `CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    age INTEGER NOT NULL
+  )`,
+  (err, result) => {
+    if (err) {
+      console.error('Error creating table: ', err);
+    } else {
+      console.log('Table users is available!');
+    }
+  }
+);
 
 module.exports = {
 
   async addUser(user) {
     try {
-      const {rows} = await pool.query(
+      const { rows } = await pool.query(
         'INSERT INTO users (name, age) VALUES ($1, $2) RETURNING id',
         [user.name, user.age]
       );
-      const lastId = rows[0].id
+      const lastId = rows[0].id;
       return { id: lastId, ...user };
     } catch (err) {
       throw err;
@@ -17,8 +32,8 @@ module.exports = {
 
   async getUsers() {
     try {
-      const users = await pool.query('SELECT * FROM users');
-      return users.rows;
+      const { rows } = await pool.query('SELECT * FROM users');
+      return rows;
     } catch (err) {
       throw err;
     }
@@ -26,8 +41,8 @@ module.exports = {
 
   async getUserById(id) {
     try {
-      const user = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
-      return user.rows[0];
+      const { rows } = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
+      return rows[0];
     } catch (err) {
       throw err;
     }
@@ -39,12 +54,12 @@ module.exports = {
       if (!originalUser) {
         return null;
       }
-      const user = await pool.query(
+      const { rows } = await pool.query(
         'UPDATE users SET name = $1, age = $2 WHERE id = $3 RETURNING *',
         [updateData.name, updateData.age, id]
       );
-      if (originalUser.name === user.rows[0].name &&
-        originalUser.age === user.rows[0].age) {
+      if (originalUser.name === rows[0].name &&
+        originalUser.age === rows[0].age) {
         return null;
       }
       return this.getUserById(id);
@@ -55,8 +70,8 @@ module.exports = {
 
   async deleteUser(id) {
     try {
-      const user = await pool.query('DELETE FROM users WHERE id = $1', [id]);
-      return user.rowCount > 0;
+      const { rowCount } = await pool.query('DELETE FROM users WHERE id = $1', [id]);
+      return rowCount > 0;
     } catch (err) {
       throw err;
     }
