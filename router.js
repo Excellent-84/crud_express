@@ -4,7 +4,7 @@ import userRoutes from './userRoutes/userRoutes.js';
 const router = new Router();
 
 router.use('/users', userRoutes);
-router.use((req, res) => {
+router.all('*', (req, res) => {
   res.status(404).json({ message: 'Page not found' });
 });
 
