@@ -16,6 +16,11 @@ git clone https://github.com/Excellent-84/crud_express.git
 cd crud_express
 ```
 
+##### Создать файл .env и указать необходимые токены по примеру .env.example:
+```
+touch .env
+```
+
 ##### Запустить проект:
 
 ```
