@@ -1,7 +1,7 @@
 import pool from './db.js';
 
 pool.query(
-  `CREATE TABLE IF NOT EXISTS users (
+  `CREATE TABLE IF NOT EXISTS users(
     id SERIAL PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
     age INTEGER NOT NULL

@@ -1,4 +1,4 @@
-import db from '../db/dbUsers.js';
+import db from '../../db/dbUsers.js';
 
 export default async (req, res) => {
   const { name, age } = req.body;
