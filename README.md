@@ -11,20 +11,26 @@ CRUD по взаимодействию с пользователями и рел
 
 ##### Клонировать репозиторий и перейти в него в командной строке:
 
-```
-git clone https://github.com/Excellent-84/crud_express.git
-cd crud_express
+```bash
+$ git clone https://github.com/Excellent-84/crud_express.git
+$ cd crud_express
 ```
 
 ##### Создать файл .env и указать необходимые токены по примеру .env.example:
+```bash
+$ touch .env
 ```
-touch .env
+
+##### Установить зависимости:
+
+```bash
+$ npm install
 ```
 
 ##### Запустить проект:
 
-```
-npm run start
+```bash
+$ npm run start
 ```
 
 ### Примеры запросов к API с помощью Postman:
@@ -39,7 +45,7 @@ npm run start
 
 Пример ответа:
 
-```
+```bash
 {
     "id": 21,
     "name": "John",
@@ -53,7 +59,7 @@ npm run start
 
 Пример ответа:
 
-```
+```bash
 [
     {
         "id": 1,
@@ -75,7 +81,7 @@ npm run start
 
 Пример ответа:
 
-```
+```bash
 {
     "id": 13,
     "name": "John",
@@ -93,7 +99,7 @@ npm run start
 
 Пример ответа:
 
-```
+```bash
 {
     "id": 21,
     "name": "John Doe",
